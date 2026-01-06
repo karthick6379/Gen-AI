@@ -6,11 +6,8 @@ import './Sidebar.css';
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const menuItems = [
     { id: 1, icon: '🏠', label: 'Dashboard' },
-    { id: 2, icon: '💳', label: 'Payments' },
-    { id: 3, icon: '🔄', label: 'Transactions' },
-    { id: 4, icon: '📄', label: 'Invoices' },
-    { id: 5, icon: '💳', label: 'Cards' },
-    { id: 6, icon: '🐷', label: 'Saving Plans' },
+    { id: 2, icon: '📄', label: 'Invoices' }
+   
   ];
 
   const [activeItem, setActiveItem] = useState(1);

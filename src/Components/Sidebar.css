@@ -28,9 +28,9 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
-.sidebar.open .sidebar-header {
+/* .sidebar.open .sidebar-header {
   justify-content: center;
-}
+} */
 
 .sidebar.closed .sidebar-header {
   justify-content: space-between;
