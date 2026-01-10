@@ -2,7 +2,7 @@ import { useState } from 'react'
 import './Date.css'
 
 function DateFilter() {
-  const [startDate, setStartDate] = useState('2024-10-21')
+  const [startDate, setStartDate] = useState('2024-10-22')
   const [endDate, setEndDate] = useState('2024-11-21')
   const [showDatePicker, setShowDatePicker] = useState(false)
 
