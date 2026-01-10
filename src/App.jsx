@@ -1,6 +1,6 @@
 import { useState } from 'react'
-import Sidebar from './Components/Sidebar'
-import MainContent from './Components/MainContent'
+import Sidebar from './Components/Sidebar/Sidebar'
+import MainContent from './Components/MainContent/MainContent'
 import './App.css'
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
   }
 
   return (
-    <div className="dashboard-container">
+    <div className="dashboard-containers">
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       <MainContent sidebarOpen={sidebarOpen} />
     </div>

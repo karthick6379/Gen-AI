@@ -80,6 +80,8 @@
   justify-content: center;
   transition: all 0.2s;
   font-size: 0.875rem;
+  padding:3px;
+  border-radius: 10px;
 }
 
 .toggle-btn:hover {
@@ -210,4 +212,3 @@
 .sidebar-nav::-webkit-scrollbar-thumb:hover {
   background: rgba(0, 0, 0, 0.3);
 }
-

@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import Logo from '../assets/Logo.png';
-import LogoSmall from '../assets/logosmall.png';
+import Logo from '../../assets/Logo.png'
+import LogoSmall from '../../assets/logosmall.png';
 import './Sidebar.css';
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const menuItems = [
     { id: 1, icon: '🏠', label: 'Dashboard' },
-    { id: 2, icon: '📄', label: 'Invoices' }
-   
+    { id: 2, icon: '📄', label: 'Invoices' },
   ];
 
   const [activeItem, setActiveItem] = useState(1);
@@ -59,4 +58,3 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
 };
 
 export default Sidebar;
-
