@@ -16,7 +16,8 @@ const Dashboard_Vendors = () => {
         }],
         chart: {
           type: 'bar',
-          height: 350
+          height: 350,
+          width: '100%'
         },
         plotOptions: {
           bar: {
@@ -54,7 +55,17 @@ const Dashboard_Vendors = () => {
       const chart = new ApexCharts(chartRef.current, options);
       chart.render();
 
+      // Handle window resize
+      const handleResize = () => {
+        if (chartRef.current) {
+          chart.resize();
+        }
+      };
+
+      window.addEventListener('resize', handleResize);
+
       return () => {
+        window.removeEventListener('resize', handleResize);
         chart.destroy();
       };
     }
@@ -112,7 +123,17 @@ const Dashboard_Vendors = () => {
 
       pieChart.setOption(option);
 
+      // Handle window resize for ECharts
+      const handleResize = () => {
+        if (pieRef.current) {
+          pieChart.resize();
+        }
+      };
+
+      window.addEventListener('resize', handleResize);
+
       return () => {
+        window.removeEventListener('resize', handleResize);
         pieChart.dispose();
       };
     }
@@ -149,7 +170,7 @@ const Dashboard_Vendors = () => {
           <span>Global Ticket Count</span>
         </div>  
         {/* Pie chart */}
-        <div id="piechart" ref={pieRef} style={{ width: '600px', height: '400px' }}></div>
+        <div id="piechart" ref={pieRef}></div>
       </div>
     </div>
   );

@@ -2,18 +2,25 @@
   position: fixed;
   left: 0;
   top: 0;
+  bottom: 0;
   height: 100vh;
+  height: 100dvh; /* Dynamic viewport height for mobile browsers */
+  min-height: 100vh;
+  min-height: -webkit-fill-available; /* Safari/iOS support */
   background: #d4edda;
   color: #000;
-  transition: width 0.3s ease;
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1000;
   display: flex;
   flex-direction: column;
   box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+  will-change: width, box-shadow;
 }
 
 .sidebar.open {
   width: 260px;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
 }
 
 .sidebar.closed {

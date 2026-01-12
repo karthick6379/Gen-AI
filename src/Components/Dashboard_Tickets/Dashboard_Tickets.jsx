@@ -42,37 +42,93 @@ const DashboardTickets = () => {
     if (chartRef.current) {
       const chart = echarts.init(chartRef.current);
   
-      const option = {
-        tooltip: {
-          trigger: 'item',
-          formatter: '{b}: {c}'   // only show name and count
-        },
-        legend: {
-          top: '5%',
-          left: 'center'
-        },
-        series: [
-          {
-            name: '',   // removed "Access From"
-            type: 'pie',
-            radius: ['40%', '70%'],
-            center: ['50%', '70%'],
-            startAngle: 180,
-            endAngle: 360,
-            data: [
-              { value: 125, name: 'Total Tickets' },
-              { value: 42, name: 'Open Tickets' },
-              { value: 78, name: 'Resolved Tickets' },
-              { value: 5, name: 'Pending Tickets' },
-            ]
-          }
-        ]
+      // Responsive chart options based on window width
+      const getChartOptions = () => {
+        const width = window.innerWidth;
+        const isMobile = width <= 480;
+        const isTablet = width <= 768;
+        
+        return {
+          tooltip: {
+            trigger: 'item',
+            formatter: '{b}: {c}',
+            textStyle: {
+              fontSize: isMobile ? 11 : isTablet ? 12 : 14
+            }
+          },
+          legend: {
+            top: isMobile ? '2%' : isTablet ? '3%' : '5%',
+            left: 'center',
+            itemGap: isMobile ? 8 : isTablet ? 10 : 12,
+            textStyle: {
+              fontSize: isMobile ? 10 : isTablet ? 11 : 13
+            }
+          },
+          series: [
+            {
+              name: '',
+              type: 'pie',
+              radius: isMobile ? ['35%', '60%'] : isTablet ? ['38%', '65%'] : ['40%', '70%'],
+              center: ['50%', isMobile ? '65%' : isTablet ? '68%' : '70%'],
+              startAngle: 180,
+              endAngle: 360,
+              avoidLabelOverlap: true,
+              itemStyle: {
+                borderRadius: isMobile ? 3 : isTablet ? 4 : 5
+              },
+              label: {
+                show: !isMobile,
+                fontSize: isTablet ? 11 : 12,
+                position: 'outside'
+              },
+              labelLine: {
+                show: !isMobile,
+                length: isTablet ? 10 : 15,
+                length2: isTablet ? 5 : 10
+              },
+              emphasis: {
+                label: {
+                  show: true,
+                  fontSize: isMobile ? 10 : isTablet ? 12 : 14,
+                  fontWeight: 'bold'
+                }
+              },
+              data: [
+                { value: 125, name: 'Total Tickets' },
+                { value: 42, name: 'Open Tickets' },
+                { value: 78, name: 'Resolved Tickets' },
+                { value: 5, name: 'Pending Tickets' },
+              ]
+            }
+          ]
+        };
       };
   
-      chart.setOption(option);
+      chart.setOption(getChartOptions());
+  
+      // Handle window resize with debounce for better performance
+      let resizeTimer;
+      const handleResize = () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(() => {
+          if (chartRef.current) {
+            chart.resize();
+            chart.setOption(getChartOptions(), true);
+          }
+        }, 150);
+      };
+      
+      window.addEventListener('resize', handleResize);
+  
+      // Initial resize to ensure correct sizing
+      setTimeout(() => {
+        chart.resize();
+      }, 100);
   
       // cleanup
       return () => {
+        clearTimeout(resizeTimer);
+        window.removeEventListener('resize', handleResize);
         chart.dispose();
       };
     }

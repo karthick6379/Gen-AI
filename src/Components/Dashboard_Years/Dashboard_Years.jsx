@@ -15,8 +15,9 @@ const Dashboard_Years = () => {
               data: [10, 41, 35, 51, 49, 62, 69, 91, 148]
             }],
             chart: {
-              height: 350,
               type: 'line',
+              height: 350,
+              width: '100%',
               zoom: {
                 enabled: false
               }
@@ -47,7 +48,17 @@ const Dashboard_Years = () => {
       const lineChart = new ApexCharts(lineChartRef.current, lineOptions);
       lineChart.render();
 
+      // Handle window resize
+      const handleResize = () => {
+        if (lineChartRef.current) {
+          lineChart.resize();
+        }
+      };
+
+      window.addEventListener('resize', handleResize);
+
       return () => {
+        window.removeEventListener('resize', handleResize);
         lineChart.destroy();
       };
     }
@@ -71,7 +82,8 @@ const Dashboard_Years = () => {
         ],
         chart: {
           type: 'bar',
-          height: 350
+          height: 350,
+          width: '100%'
         },
         colors: colors,
         tooltip: {
@@ -115,7 +127,17 @@ const Dashboard_Years = () => {
       const barChart = new ApexCharts(barChartRef.current, barOptions);
       barChart.render();
 
+      // Handle window resize
+      const handleResize = () => {
+        if (barChartRef.current) {
+          barChart.resize();
+        }
+      };
+
+      window.addEventListener('resize', handleResize);
+
       return () => {
+        window.removeEventListener('resize', handleResize);
         barChart.destroy();
       };
     }
@@ -129,7 +151,7 @@ const Dashboard_Years = () => {
       </div>
       <div className='Graph-chart'>
         {/* Bar chart */}
-        <div id="barChart" ref={barChartRef} style={{ width: '100%', height: '350px' }}></div>
+        <div id="barChart" ref={barChartRef}></div>
       </div>
     </div>
   );
