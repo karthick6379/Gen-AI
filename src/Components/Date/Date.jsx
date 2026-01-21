@@ -23,10 +23,7 @@ function DateFilter() {
       // Define headers
       const headers = [
         "Invoice Id",
-        "Supplier Detail",
-        "Buyer Detail",
         "Month",
-        "Date",
         "Recieved Time",
         "Responded Time",
         "Error Type",
@@ -46,10 +43,7 @@ function DateFilter() {
       // Map rows
       const rows = invoice.map(inv => [
         inv.invoiceId,
-        inv.supplierDetail,
-        inv.buyerDetail,
         inv.month,
-        inv.date,
         inv.recievedTime,
         inv.respondedTime,
         inv.errorType,
