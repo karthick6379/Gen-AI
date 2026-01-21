@@ -1,10 +1,7 @@
 const invoices = [
   {
     invoiceId: "INV-001",
-    supplierDetail: "XYZ Corp.",
-    buyerDetail: "ABC Supplies Ltd.",
     month: "August",
-    date: "01/08/2025",
     recievedTime: "12-03-2024",
     respondedTime: "12-03-2024",
     errorType: "Type 3",
@@ -29,10 +26,7 @@ const invoices = [
   },
   {
     invoiceId: "INV-002",
-    supplierDetail: "Global Traders",
-    buyerDetail: "Tech Solutions",
     month: "June",
-    date: "01/08/2025",
     recievedTime: "14-04-2025",
     respondedTime: "14-04-2025",
     errorType: "Type 1",
@@ -57,10 +51,7 @@ const invoices = [
   },
   {
     invoiceId: "INV-003",
-    supplierDetail: "ABC Sues Ltd.",
-    buyerDetail: "XelaZ Corp.",
     month: "July",
-    date: "31/07/2025",
     recievedTime: "17-12-2025",
     respondedTime: "17-12-2025",
     errorType: "Type 2",
