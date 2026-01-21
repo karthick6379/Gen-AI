@@ -112,7 +112,7 @@ const DashboardTickets = () => {
         clearTimeout(resizeTimer);
         resizeTimer = setTimeout(() => {
           if (chartRef.current) {
-            chart.resize();
+            // chart.resize();
             chart.setOption(getChartOptions(), true);
           }
         }, 150);
@@ -122,7 +122,7 @@ const DashboardTickets = () => {
   
       // Initial resize to ensure correct sizing
       setTimeout(() => {
-        chart.resize();
+        // chart.resize();
       }, 100);
   
       // cleanup
