@@ -8,8 +8,6 @@ import './MainContent.css'
 function MainContent({ sidebarOpen }) {
   return (
     <main className={`main-content ${sidebarOpen ? 'sidebar-open' : 'sidebar-closed'}`}>
-      <Header />
-      <DateFilter />
       <DashboardTickets />
       <DashboardYears />
       <Dashboard_Vendors/>

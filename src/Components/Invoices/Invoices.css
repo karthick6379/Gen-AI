@@ -1,0 +1,46 @@
+
+.invoices-container {
+  padding: 20px;
+  width: 100%;
+  overflow-x: auto; /* enables horizontal scroll on small screens */
+}
+
+.table-responsive {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.invoice-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 900px; /* ensures table doesn’t shrink too much */
+}
+
+.invoice-table th,
+.invoice-table td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+  white-space: nowrap; /* prevents text from breaking awkwardly */
+}
+
+.invoice-table th {
+  background-color: #f4f4f4;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .invoice-table th,
+  .invoice-table td {
+    padding: 6px;
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .invoice-table th,
+  .invoice-table td {
+    padding: 4px;
+    font-size: 11px;
+  }
+}

@@ -51,7 +51,7 @@ const Dashboard_Years = () => {
       // Handle window resize
       const handleResize = () => {
         if (lineChartRef.current) {
-          lineChart.resize();
+          // lineChart.resize();
         }
       };
 
@@ -130,7 +130,7 @@ const Dashboard_Years = () => {
       // Handle window resize
       const handleResize = () => {
         if (barChartRef.current) {
-          barChart.resize();
+          // barChart.resize();
         }
       };
 

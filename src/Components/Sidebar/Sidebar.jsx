@@ -1,28 +1,32 @@
 import { useState } from 'react';
 import Logo from '../../assets/Logo.png'
 import LogoSmall from '../../assets/logosmall.png';
+import { useNavigate } from 'react-router-dom';
 import './Sidebar.css';
 
 const Sidebar = ({ isOpen, toggleSidebar }) => {
   const menuItems = [
-    { id: 1, icon: '🏠', label: 'Dashboard' },
-    { id: 2, icon: '📄', label: 'Invoices' },
+    { id: 1, icon: '🏠', label: 'Dashboard',path:'/' },
+    { id: 2, icon: '📄', label: 'Invoice Details' ,path:'/invoice_Details'},
   ];
 
   const [activeItem, setActiveItem] = useState(1);
+  const navigate = useNavigate();
 
   return (
-    <div className={`sidebar ${isOpen ? 'open' : 'closed'}`}>
+    // changed
+    <div className={`sidebar ${isOpen ? 'closed' : 'open'}`}>
       <div className="sidebar-header">
         <div className="logo">
           <img 
-            src={isOpen ? Logo : LogoSmall} 
+            src={isOpen ? LogoSmall : Logo} 
             alt="Logo" 
             className="logo-icon" 
           />
         </div>
         <button className="toggle-btn" onClick={toggleSidebar}>
-          {isOpen ? '◀' : '▶'}
+          {/* changed */}
+          {isOpen ? '▶' : '◀'}
         </button>
       </div>
       
@@ -32,27 +36,21 @@ const Sidebar = ({ isOpen, toggleSidebar }) => {
             <li key={item.id}>
               <button
                 className={`nav-item ${activeItem === item.id ? 'active' : ''}`}
-                onClick={() => setActiveItem(item.id)}
+                onClick={() => {
+                  setActiveItem(item.id);
+                  navigate(item.path); // 👈 navigate to the route
+                }}
               >
                 <span className="nav-icon">{item.icon}</span>
-                {isOpen && <span className="nav-label">{item.label}</span>}
+                {/* changed */}
+                {!isOpen && <span className="nav-label">{item.label}</span>}
               </button>
             </li>
           ))}
         </ul>
       </nav>
 
-      <div className="sidebar-footer">
-        {isOpen && (
-          <div className="user-profile">
-            <div className="user-avatar">👤</div>
-            <div className="user-info">
-              <div className="user-name">John Doe</div>
-              <div className="user-email">john@example.com</div>
-            </div>
-          </div>
-        )}
-      </div>
+      
     </div>
   );
 };

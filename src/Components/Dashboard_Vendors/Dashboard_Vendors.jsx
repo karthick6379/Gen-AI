@@ -58,7 +58,7 @@ const Dashboard_Vendors = () => {
       // Handle window resize
       const handleResize = () => {
         if (chartRef.current) {
-          chart.resize();
+          // chart.resize();
         }
       };
 
@@ -126,7 +126,7 @@ const Dashboard_Vendors = () => {
       // Handle window resize for ECharts
       const handleResize = () => {
         if (pieRef.current) {
-          pieChart.resize();
+          // pieChart.resize();
         }
       };
 

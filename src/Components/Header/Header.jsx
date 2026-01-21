@@ -1,13 +1,26 @@
 import { useState } from 'react'
 import './Header.css'
+import { useLocation } from 'react-router-dom'
 
 function Header() {
   const [selectedCountry, setSelectedCountry] = useState('Select Country')
+  const location = useLocation();
+
+  const getPageTitle = (path) => {
+    switch (path) {
+      case '/':
+        return 'Dashboard'; 
+      case '/invoice_Details':
+        return 'Invoice Details'; 
+      default:
+        return 'Page'; 
+       } 
+     };
 
   return (
     <header className="main-header">
       <div className="header-content">
-        <h1 className="page-title">Dashboard</h1>
+        <h1 className="page-title">{getPageTitle(location.pathname)}</h1>
         <div className="header-actions">
           <select 
             className="country-select" 
